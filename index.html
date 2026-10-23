@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f5f2e9" />
+  <title>Unburden — do less, move gently</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script type="module" src="script.js"></script>
+</head>
+<body>
+  <div class="grain"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Unburden home"><span class="brand-mark">u.</span><span>unburden<span class="brand-dot">.</span></span></a>
+    <div class="top-note"><span class="live-dot"></span> YOUR MIND, WITH LESS TABS OPEN</div>
+    <button class="quiet-button" id="privacyBtn" type="button">↗ Privacy note</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span> THE SLOW PRODUCTIVITY TOOL</p>
+        <h1>You don’t need<br>more <em>discipline.</em><br>You need less to carry.</h1>
+        <p class="hero-sub">Drop the messy pile in your head. Unburden turns it into a small, doable next step — without sending your thoughts to a server.</p>
+        <div class="hero-proof">
+          <span class="proof-icon">✳</span>
+          <span>Open-weight AI · Runs in your browser · No API key</span>
+        </div>
+      </div>
+      <div class="hero-art" aria-label="Illustration of a relaxed sloth hanging from a branch">
+        <div class="sun"></div>
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="leaf leaf-a"></div><div class="leaf leaf-b"></div><div class="leaf leaf-c"></div>
+        <div class="branch"></div>
+        <div class="sloth">
+          <div class="sloth-arm arm-left"></div><div class="sloth-arm arm-right"></div>
+          <div class="sloth-body"></div><div class="sloth-head"><div class="face-patch"></div><div class="eye eye-left"></div><div class="eye eye-right"></div><div class="nose"></div><div class="smile"></div></div>
+          <div class="sloth-leg leg-left"></div><div class="sloth-leg leg-right"></div>
+        </div>
+        <div class="art-caption">slow is still a speed.</div>
+        <span class="spark spark-one">✳</span><span class="spark spark-two">✦</span>
+      </div>
+    </section>
+
+    <section class="workspace" id="workspace">
+      <div class="section-heading">
+        <div><p class="eyebrow">01 / EMPTY YOUR HEAD</p><h2>Give the chaos a place to land.</h2></div>
+        <span class="step-count">NO PERFECT WORDING REQUIRED</span>
+      </div>
+      <div class="work-grid">
+        <div class="input-panel panel">
+          <div class="panel-top"><span class="panel-label"><span class="tiny-square"></span> THE BRAIN DUMP</span><span class="mono" id="wordCount">0 WORDS</span></div>
+          <label for="brainDump" class="sr-only">Write everything you need to do</label>
+          <textarea id="brainDump" placeholder="Email the professor, finish that half-done assignment, buy groceries, reply to 6 messages, clean the desk...&#10;&#10;It can be messy. That's the point."></textarea>
+          <div class="input-bottom">
+            <button class="sample-link" id="sampleBtn" type="button">↳ Use a sample brain dump</button>
+            <span class="input-hint">Your thoughts stay in this tab.</span>
+          </div>
+          <div class="effort-row">
+            <div><span class="effort-title">How much energy have you got?</span><span class="effort-sub">Be honest. No productivity guilt here.</span></div>
+            <div class="energy-options" role="group" aria-label="Choose energy level">
+              <button class="energy-btn" data-energy="low" type="button"><span>☁</span> Barely</button>
+              <button class="energy-btn active" data-energy="medium" type="button"><span>◒</span> Some</button>
+              <button class="energy-btn" data-energy="high" type="button"><span>☀</span> Plenty</button>
+            </div>
+          </div>
+          <button class="primary-button" id="unburdenBtn" type="button"><span class="button-symbol">✳</span><span id="buttonText">Make this feel lighter</span><span class="button-arrow">↗</span></button>
+          <div class="model-status"><span class="status-pulse" id="statusPulse"></span><span id="modelStatus">AI model will load when you start · first run needs internet</span></div>
+        </div>
+
+        <div class="output-panel panel" id="outputPanel">
+          <div class="panel-top"><span class="panel-label"><span class="tiny-square coral"></span> YOUR LIGHTER PLAN</span><span class="mono" id="planBadge">WAITING</span></div>
+          <div class="empty-state" id="emptyState">
+            <div class="empty-orbit"><span>z</span><span>z</span><span>✳</span></div>
+            <h3>Nothing to solve yet.</h3>
+            <p>Drop the mental pile on the left. We'll find the smallest useful way in.</p>
+            <div class="empty-rule"></div><span class="mono">LESS OVERWHELM. ONE NEXT MOVE.</span>
+          </div>
+          <div id="result" class="result hidden" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="method">
+      <div class="method-intro"><p class="eyebrow">02 / THE UNBURDEN RULE</p><h2>Not a 47-step<br><em>morning routine.</em></h2><p>We don't turn your to-do list into a bigger to-do list. We shrink the starting line.</p></div>
+      <div class="rule-list">
+        <article class="rule"><span class="rule-number">01</span><div><h3>Make it tiny</h3><p>“Study DBMS” becomes “open the notes and read one heading.”</p></div><span class="rule-icon">↘</span></article>
+        <article class="rule"><span class="rule-number">02</span><div><h3>Respect your battery</h3><p>A low-energy day gets low-friction actions, not a lecture.</p></div><span class="rule-icon">◒</span></article>
+        <article class="rule"><span class="rule-number">03</span><div><h3>Keep it yours</h3><p>The open model runs in your browser. Your brain dump isn't sent to an AI API.</p></div><span class="rule-icon">⌂</span></article>
+      </div>
+    </section>
+
+    <section class="footer-cta"><span class="footer-flower">✳</span><div><p class="eyebrow">A NOTE FROM YOUR FUTURE SELF</p><h2>Rest is allowed.<br><em>Starting small counts.</em></h2></div><button id="backToTop" class="outline-button" type="button">Back to the brain dump ↑</button></section>
+  </main>
+
+  <footer><span>UNBURDEN © 2026</span><span>BUILT FOR THE SLOW & STEADY CHALLENGE</span><span>OPEN AI. OPEN MIND.</span></footer>
+
+  <dialog id="privacyDialog">
+    <button class="dialog-close" id="closePrivacy" aria-label="Close privacy note" type="button">×</button>
+    <p class="eyebrow">PRIVACY, WITHOUT THE FINE PRINT</p>
+    <h2>Your brain dump is <em>yours.</em></h2>
+    <p>Unburden uses an open model through Transformers.js in your browser. Your text is passed to that model locally for inference; it is not sent to a hosted AI chat API by this app.</p>
+    <p><strong>Honest caveat:</strong> the first model download needs internet and the model files are fetched from the Hugging Face Hub. After download, browser caching may help, but fully offline use is not guaranteed. Avoid entering highly sensitive information.</p>
+    <button class="primary-button dialog-ok" id="privacyOkay" type="button">Got it <span>↗</span></button>
+  </dialog>
+  <div class="toast" id="toast" role="status"></div>
+</body>
+</html>
